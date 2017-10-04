@@ -2,6 +2,9 @@ import urllib.request
 import re
 import os
 
+if not os.path.exists("plaintext"):
+    os.mkdir("plaintext")
+G = os.path.abspath("plaintext")
 
 def download_page(pageUrl):
     text = ""
@@ -17,7 +20,7 @@ def download_page(pageUrl):
 def issue_links():
     issues = []
     commonUrl = 'http://magazines.russ.ru/sib/'
-    for j in range(2006, 2015):
+    for j in range(2006, 2007):
         for i in range(1, 13):
             issueUrl = commonUrl + str(j) + '/' +str(i)
             issues.append(issueUrl)
@@ -49,9 +52,26 @@ def clean(text):
     cleantext = regLatin.sub("", cleantext)
     return cleantext
 
+def directories():
+    os.chdir("plaintext")
+    for i in range(2006, 2015):
+        for j in range(1, 13):
+            path = str(i)+ "/" + str(j)
+            if not os.path.exists(path):
+                os.makedirs(path)
+    return 0
 
-def write_into(cleantext):
-    with open("file.txt", "a", encoding="utf-8") as f:
+
+def form_path_name(link):
+    match = re.search(r"(/[0-9]{4}/[0-9]{1,}?)/(.*?).html", link)
+    path = match.group(1)
+    name = match.group(2)
+    print(path, name)
+    return path, name
+
+def write_into(cleantext, path, name):
+    os.chdir(G + path)
+    with open(name + ".txt", "w", encoding="utf-8") as f:
         try:
             f.write(cleantext)
             print("Successful writing")
@@ -70,7 +90,12 @@ def main():
     for issue in range (len(allissuelinks)):
         for link in allissuelinks[issue]:
             link = siteaddress + link
-            write_into(clean(get_text(link)))
+            print(link)
+            txt = get_text(link)
+            txt = clean(txt)
+            pth, nme = form_path_name(link)
+            write_into(txt, pth, nme)
 
     return 0
 main()
+#directories()
