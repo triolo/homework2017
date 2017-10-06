@@ -2,9 +2,7 @@ import urllib.request
 import re
 import os
 
-if not os.path.exists("plaintext"):
-    os.mkdir("plaintext")
-PT = os.path.abspath("plaintext")
+PT = os.path.abspath("plain")
 root = os.path.abspath("")
 app_size = []
 
@@ -73,12 +71,34 @@ def replace_punct(text):
     return text
 
 def directories():
-    os.chdir("plaintext")
+    os.chdir(root)
+    if not os.path.exists("plain"):
+        os.mkdir("plain")
+    os.chdir("plain")
     for i in range(2006, 2015):
         for j in range(1, 13):
             path = str(i)+ "/" + str(j)
             if not os.path.exists(path):
                 os.makedirs(path)
+    os.chdir(root)
+    if not os.path.exists("mystem-xml"):
+        os.mkdir("mystem-xml")
+    os.chdir("mystem-xml")
+    for i in range(2006, 2015):
+        for j in range(1, 13):
+            path = str(i)+ "/" + str(j)
+            if not os.path.exists(path):
+                os.makedirs(path)
+    os.chdir(root)
+    if not os.path.exists("mystem-plain"):
+        os.mkdir("mystem-plain")
+    os.chdir("mystem-plain")
+    for i in range(2006, 2015):
+        for j in range(1, 13):
+            path = str(i)+ "/" + str(j)
+            if not os.path.exists(path):
+                os.makedirs(path)
+    os.chdir(root)
     return 0
 
 
@@ -182,12 +202,32 @@ def corpus_size():
     size = 0
     for root, dirs, files in os.walk(PT):
         for f in files:
-            with open(os.path.join(root, f), "r", encoding="cp866") as f1:
+            with open(os.path.join(root, f), "r", encoding="utf-8") as f1:
                 oneline = f1.read()
                 item_size = oneline.count(" ") + 1
                 size += item_size
     print("Оценочный размер корпуса: ", size)
     return 0
+
+def mystem():
+    argx = "-cgind --format xml "
+    argp = "-cgind "
+    for root, dirs, files in os.walk("plain"):
+        for f in files:
+            input_file_path = os.path.join(os.path.abspath(root), f)
+            output_file_path = input_file_path.replace("plain", "mystem-xml")
+            output_file_path = output_file_path.replace(".txt", ".xml")
+            print(input_file_path)
+            print(output_file_path)
+            os.system(r"/Users/triolo/mystem " + argx + input_file_path + " " + output_file_path)
+    for root, dirs, files in os.walk("plain"):
+        for f in files:
+            input_file_path = os.path.join(os.path.abspath(root), f)
+            output_file_path = input_file_path.replace("plain", "mystem-plain")
+            print(input_file_path)
+            print(output_file_path)
+            os.system(r"/Users/triolo/mystem " + argp + input_file_path + " " + output_file_path)
+    return
 
 
 def main():
@@ -213,6 +253,8 @@ def main():
                 pth, nme = form_path_name(link)
                 write_into(txt, pth, nme, metaplain)
     return 0
-write_csv_header()
-main()
-corpus_size()
+#directories()
+#write_csv_header()
+#main()
+#corpus_size()
+mystem()
