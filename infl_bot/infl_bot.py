@@ -1,5 +1,4 @@
 import json
-import os
 import random
 from pymorphy2 import MorphAnalyzer
 morph = MorphAnalyzer()
@@ -35,9 +34,8 @@ def find_best_score(ana_list):
             best_i = i
     return ana_list[best_i]
 
-def get_inp():
-    text = input()
-    words = text.split()
+def get_inp(message):
+    words = message.split()
     massinp = []
     for el in words:
         aneli = {}
@@ -51,9 +49,9 @@ def get_inp():
 
 
 
-def interchange():
+def interchange(message):
     res = []
-    massinp = get_inp()
+    massinp = get_inp(message)
     for el in massinp:
         poss_words = []
         tag = el['tag']
@@ -65,7 +63,4 @@ def interchange():
         res.append(word)
     sres = " ".join(res)
     return sres
-
-#form_dict()
-print(interchange())
 
