@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf version="1.2" xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance">
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <meta>
+      <creator>NetworkX 2.1</creator>
+      <lastmodified>03/06/2018</lastmodified>
+    </meta>
+    <nodes>
+      <node id="0" label="церковь" />
+      <node id="1" label="кадило" />
+      <node id="2" label="поп" />
+      <node id="3" label="священник" />
+      <node id="4" label="крест" />
+      <node id="5" label="митра" />
+      <node id="6" label="подрясник" />
+      <node id="7" label="дар" />
+      <node id="8" label="тело" />
+      <node id="9" label="кровь" />
+      <node id="10" label="пономарь" />
+      <node id="11" label="требник" />
+      <node id="12" label="святцы" />
+      <node id="13" label="купол" />
+      <node id="14" label="икона" />
+      <node id="15" label="иконостас" />
+      <node id="16" label="алтарь" />
+      <node id="17" label="святой" />
+      <node id="18" label="чтец" />
+      <node id="19" label="часы" />
+      <node id="20" label="ладан" />
+      <node id="21" label="камилавка" />
+      <node id="22" label="молитва" />
+      <node id="23" label="бог" />
+      <node id="24" label="ангел" />
+      <node id="25" label="архангел" />
+      <node id="26" label="сила" />
+      <node id="27" label="херувим" />
+      <node id="28" label="серафим" />
+      <node id="29" label="ад" />
+      <node id="30" label="дьявол" />
+      <node id="32" label="подлость" />
+      <node id="33" label="гордыня" />
+    </nodes>
+    <edges>
+      <edge id="0" source="0" target="16" />
+      <edge id="1" source="0" target="17" />
+      <edge id="2" source="0" target="3" />
+      <edge id="3" source="0" target="14" />
+      <edge id="4" source="0" target="15" />
+      <edge id="5" source="1" target="16" />
+      <edge id="6" source="1" target="3" />
+      <edge id="7" source="1" target="20" />
+      <edge id="8" source="1" target="21" />
+      <edge id="9" source="1" target="10" />
+      <edge id="10" source="1" target="5" />
+      <edge id="11" source="2" target="10" />
+      <edge id="12" source="2" target="3" />
+      <edge id="13" source="2" target="21" />
+      <edge id="14" source="3" target="16" />
+      <edge id="15" source="3" target="21" />
+      <edge id="16" source="3" target="10" />
+      <edge id="17" source="3" target="11" />
+      <edge id="18" source="4" target="21" />
+      <edge id="19" source="4" target="5" />
+      <edge id="20" source="5" target="16" />
+      <edge id="21" source="5" target="21" />
+      <edge id="22" source="5" target="6" />
+      <edge id="23" source="5" target="27" />
+      <edge id="24" source="5" target="28" />
+      <edge id="25" source="5" target="13" />
+      <edge id="26" source="5" target="14" />
+      <edge id="27" source="6" target="21" />
+      <edge id="28" source="10" target="11" />
+      <edge id="29" source="10" target="21" />
+      <edge id="30" source="11" target="12" />
+      <edge id="31" source="11" target="21" />
+      <edge id="32" source="14" target="16" />
+      <edge id="33" source="14" target="17" />
+      <edge id="34" source="14" target="15" />
+      <edge id="35" source="15" target="16" />
+      <edge id="36" source="24" target="25" />
+      <edge id="37" source="24" target="27" />
+      <edge id="38" source="24" target="28" />
+      <edge id="39" source="24" target="29" />
+      <edge id="40" source="24" target="30" />
+      <edge id="41" source="25" target="27" />
+      <edge id="42" source="25" target="28" />
+      <edge id="43" source="27" target="28" />
+      <edge id="44" source="29" target="30" />
+    </edges>
+  </graph>
+</gexf>
