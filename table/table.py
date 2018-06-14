@@ -29,17 +29,16 @@ x = []
 res = ''
 for i, row in enumerate(curses.execute('SELECT Glosses FROM wordforms')):
     x = row[0].split(".")
-    #print(x)
+    print(x)
     for j in x:
+        print(j)
         if j.isupper():
-            res = curseg.execute('SELECT Idg FROM glosses WHERE Obozn=?', (j,))
-            print(j)
-            print(res)
-            if res == None:
-                curseg.execute('INSERT INTO glosses (Obozn) VALUES (?)', (j,))
+            for wr in curseg.execute('SELECT Idg FROM glosses WHERE Obozn=?', (j,)):
+                if wr == None:
+                    curseg.execute('INSERT INTO glosses (Obozn) VALUES (?)', (j,))
             for row1 in curseg.execute('SELECT Idg FROM glosses WHERE Obozn=?', (j,)):
                 curseg.execute('INSERT INTO words_glosses (Id_word, Id_gloss) VALUES (?, ?)',(i,row1[0]))
-                print(row1)
+                #print(row1)
         #print(row1)
 #for row2 in curseg.execute('SELECT Id_word, Id_gloss FROM words_glosses'):
 #print(row2)
